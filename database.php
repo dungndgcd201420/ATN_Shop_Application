@@ -1,68 +1,165 @@
 <?php
+session_start(); 
+$page = $_SERVER['PHP_SELF'];
+  echo "<div class ='header-container'>";
+  echo "<h1>Welcome to The Database Management System!</h1>";
+  echo "</div>";
+ if(isset($_POST['submit_time'])) {
+      $_SESSION["refresh"] = $_POST["refresh_time"];
+    }
+if(isset($_POST['submit_shop'])) {
+      $_SESSION["selected_shop"] = $_POST["shop"];
+    }
+?>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel='stylesheet' type='text/css' href='style.css'>
+<!DOCTYPE html> 
+<html>
+<head>
+  <meta http-equiv="refresh" content="<?php echo $_SESSION["refresh"];?> ;URL='<?php echo $page?>'">
+  <title>Database</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <form action="" method="post">
+    <select name = "shop">
+      <option value ="dung"> SHOP A </option>
+      <option value ="khanh"> SHOP B </option>
+      <option value ="ALL_SHOP" selected> ALL SHOP </option>
+    </select>
+    <input type = "submit" value = "Select Shop" name="submit_shop">
+  </form>
+  <form action="" method="post">
+    <select name = "refresh_time">
+      <option value ="5"> 5 Seconds </option>
+      <option value ="10"> 10 Seconds </option>
+      <option value ="30"> 30 Seconds </option>
+    </select>
+     <input type = "submit" value = "Refresh" name="submit_time">
+  </form>
+    <label>
+        <?php
+            echo "Current refresh time is ".$_SESSION["refresh"]." seconds";
+        ?>
+    </label>
+</head>
+</html>
+<?php
+$dbconn = pg_connect("host=ec2-35-175-68-90.compute-1.amazonaws.com dbname=d1vup106c5v9qv user=ckcnruxsyyzsze password=7564fb08fadd71d9afaf47c548dd9b4c13b62237676e2196a9484d9486bffee1");
+$getrole = $_SESSION["role"];
 
-$dbconn = pg_connect("host=localhost dbname=dbaccount user=postgres password=12345");
- $getProduct = "SELECT * FROM product ORDER BY productid";
-        $product = pg_query($dbconn, $getProduct);
- // Performing SQL query
+if ($getrole == "ADMIN"){
+  $selected_shop = $_SESSION["selected_shop"];
+  if($selected_shop == "ALL_SHOP"){
+    $getProduct = "SELECT * FROM product ORDER BY product_id";
+  }
+  else{
+    $getProduct = "SELECT * FROM product WHERE shop_name = '$selected_shop' ORDER BY product_id";
+  }
+}
+else{
+  $getProduct = "SELECT * FROM product WHERE shop_name= '$getrole' ORDER BY product_id";
+}
+
+$product = pg_query($dbconn, $getProduct);
+
 
 
 //ADD
    if(isset($_POST['add'])) {
-         $id= $_POST['id'];
+           $productprice= $_POST['productprice'];
+         $quantity = $_POST['productquantity'];
          $shopname = $_POST ['shopname'];
-        $productname = $_POST['productname'];
-          
-          $query = "INSERT INTO product (productid, shopname, productname) VALUES 
-          ($id, '".$shopname."', '".$productname."')";
+         $productname = $_POST['productname'];
+         $id = $_POST['productid'];
+          $query = "INSERT INTO product (shop_name,product_name,product_price,quantity,product_id) VALUES 
+          ('".$shopname."', '".$productname."', '".$productprice."','".$quantity."','".$id."')";
 
           $result = pg_query($dbconn, $query);
+          header('Location: database.php');
     //UPDATE   
     }
     
-
-    //DELETE
-      if(isset($_POST['delete'])) {
-         $id= $_POST['id3'];
-          $query4 = "DELETE FROM product WHERE productid = $id";
-          $result4 = pg_query($dbconn, $query4);
+if(isset($_POST['update'])){
          
+         $productprice= $_POST['productprice'];
+         $quantity = $_POST['productquantity'];
+         $shopname = $_POST ['shopname'];
+         $productname = $_POST['productname'];
+         $id = $_POST['productid'];
+         $updateQuery = "UPDATE product SET product_name = '".$productname."', product_price = 
+         '".$productprice."', quantity= '".$quantity."' WHERE product_id = '".$id."' ";
+         $update = pg_query($dbconn,$updateQuery);
+         header('Location: database.php');
     }
+ //DELETE
 
+      if(isset($_POST['delete'])) {
+         $id= $_POST['id'];
+          $delete = "DELETE FROM product WHERE productid = $id";
+          $deleteResult = pg_query($dbconn, $delete);
+         header('Location: database.php');
+    }
+   
 
 function DisplayManagementTable($table){
 $dbconn = pg_connect("host=localhost dbname=dbaccount user=postgres password=12345");
 $num_field = pg_num_fields($table);
 $num_row=pg_num_rows($table);
-
+$getrole = $_SESSION["role"];
 //Styling Table
 echo "<div class='table'>";
 //TABLE START
-echo "<table border='2'>\n";
+echo "<table border='1'>\n";
+
 //TABLE HEADER
+echo "<thead class='thead-dark'>";
 $i =0;
 echo "<tr>";
-while ($i < $num_field)
+while ($i < $num_field )
 {
   $fieldName = pg_field_name($table, $i);
-  echo '<td>' . $fieldName . '</td>';
+  echo '<th>' . $fieldName . '</th>';
   $i = $i + 1;
 }
 echo "</tr>";
+echo " </thead>";
 //TABLE CONTENT
+
   echo "<tr>";
     for ($j=0;$j<$num_row;$j++){
        $row=pg_fetch_array($table,$j);
        if(!isset($_POST['edit'])){
            echo "<form action='' method='post'>";
+             for ($k=0;$k<$num_field;$k++){
+              $update_field_name = pg_field_name($table,$k);
+              $update_value=$row[$update_field_name];
+
+              switch($k){
+                case 0:
+                $value1 = $update_value;
+                break;
+                 case 1:
+                $value2 = $update_value;
+                break;
+                 case 2:
+                $value3 = $update_value;
+                break;
+                case 3:
+                $value4 = $update_value;
+                break;
+                case 4:
+                $value5 = $update_value;
+                break;
+              }
+           }
            //Display Table (With No Input Boxes)
-            for ($i=0;$i<$num_field;$i++){
-            $field_name = pg_field_name($table,$i);
-            $field_value=$row[$field_name];
-            echo "<td>".$field_value."</td>";
-          }
-          echo "<td><input type='submit' value='Edit' name='edit'></td>";
-          echo "<td><input type='submit' value='Delete' name=''></td>";
-          echo "</form>";
+            echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
+            echo "<td><input type='text' name='productname' value=\"" . $value2 . "\" a readonly></td>";
+            echo "<td><input type='text' name='productprice' value =$value3 readonly></td>";
+            echo "<td><input type='text' name='productquantity' value =$value4 readonly></td>";
+            echo "<td><input type='text' name='productid' value =$value5 readonly></td>";
+            echo "<th><input type='submit' value='  Edit  ' name='edit'></th>";
+            echo "<th><input type='submit' value='Delete' name='delete'></th>";
+            echo "</form>";
 
         }
                     
@@ -81,104 +178,54 @@ echo "</tr>";
                  case 2:
                 $value3 = $update_value;
                 break;
+                case 3:
+                $value4 = $update_value;
+                break;
+                case 4:
+                $value5 = $update_value;
+                break;
               }
            }
            //Display Table (With Input Boxes)
             echo "<form action='' method='post'>";
-            echo "<td><input type='text' name ='id' value =$value1 readonly></td>";
-            echo "<td><input type='text' name='shopname' value= $value2></td>";
-            echo "<td><input type='text' name='productname' value =$value3></td>";
+            echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
+            echo "<td><input type='text' name='productname' value= \"" . $value2 . "\" ></td>";
+            echo "<td><input type='text' name='productprice' value =$value3></td>";
+            echo "<td><input type='text' name='productquantity' value =$value4></td>";
+            echo "<td><input type='text' name='productid' value =$value5 readonly></td>";
             echo "<td><input type='submit' value='Confirm' name='update' ></td>";
-            echo "<td><input type='submit' value='Delete' name=''></td>";
+            echo "<td><input type='submit' value='Delete' name='delete'></td>";
             echo "</form>";
           }
-  echo "</tr>";      
-          
-}
-//TABLE END
- 
-echo "</table>";
-echo "</div>";
-   
+       
+    echo "</tr>";      
   }
+
+  
+//TABLE END
+  echo "<tr>";
+          echo "<form action='' method='post'>"; 
+          if($getrole == "ADMIN"){
+          echo "<td><input type='text' name ='shopname' value='' readonly></td>";
+          } 
+          else{
+            echo "<td><input type='text' name ='shopname' value=$getrole readonly></td>";
+          }            
+            echo "<td><input type='text' name='productname' ></td>";
+            echo "<td><input type='text' name='productprice'></td>";
+            echo "<td><input type='text' name='productquantity'></td>";
+            echo "<td><input type='text' name='productid'></td>";
+          echo "<td><input type='submit' value='Insert ' name='add'></td>";
+          echo "</form>";
+    echo "</tr>";      
+echo "</table>";
+echo "</div>";  
+}
   DisplayManagementTable($product);
-
- if(isset($_POST['update'])){
-         
-         $id= $_POST['id'];
-         $shopname = $_POST ['shopname'];
-         $productname = $_POST['productname'];
-         $updateQuery = "UPDATE product SET shopname = '".$shopname."', productname = '".$productname."' WHERE productid = $id";
-         $update = pg_query($dbconn,$updateQuery);
-         header('Location: database.php');
-    }
-
+//Update Data Real Time + Drop Down List
+   
 
 // Closing connection
 pg_close($dbconn);
 
 ?>
-
-<!DOCTYPE html> 
-<html>
-<head>
-  <title>Database</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-  <body>
-    <div class ="form-container">
-    <!-- ADD -->
-    <div class ="container">
-       <h1>Add</h1>
-     <form action="" method = "post">
-      <div class ="id">
-    <div><label for="">ID</label></div>
-    <div><input type="text" name="id" placeholder="id"></div>
-    </div>
-    <div class ="shopname">
-    <div><label for="">Shop Name</label></div>
-    <div><input type="text" name="shopname" placeholder="Shop Name"></div>
-    </div>
-    <br>
-    <div class="shopname">
-    <div><label for="">Product Name</label></div>
-    <div><input type="text" name="productname" placeholder="Product Name"></div>
-    </div>
-    <input type="submit" name="add" value="Add">
-  </form>
-    </div>
-   
-    <div class ="container">
-       <h1>Update</h1>
-<!-- UPDATE -->
- <form action="" method = "post">
-      <div class ="id">
-    <div><label for="">ID</label></div>
-    <div><input type="text" name="id2" placeholder="id"></div>
-    </div>
-    <div class ="shopname">
-    <div><label for="">Shop Name</label></div>
-    <div><input type="text" name="shopname2" placeholder="Shop Name"></div>
-    </div>
-    <br>
-    <div class="shopname">
-    <div><label for="">Product Name</label></div>
-    <div><input type="text" name="productname2" placeholder="Product Name"></div>
-    </div>
-    <input type="submit" name="update" value="Update">
-  </form> 
-</div>
-
-<div class ="container">
-  <h1>Delete</h1>
-  <form action="" method = "post">
-      <div class ="id">
-    <div><label for="">ID</label></div>
-    <div><input type="text" name="id3" placeholder="id"></div>
-    <input type="submit" name="delete" value="Delete">
-  </form> 
-  </div>
-</div>
-
-  </body>
-</html>

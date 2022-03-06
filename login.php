@@ -1,9 +1,8 @@
 <?php
-
-$dbconn = pg_connect("host=localhost dbname=dbaccount user=postgres password=12345");
+session_start();
+$dbconn = pg_connect("host=ec2-35-175-68-90.compute-1.amazonaws.com dbname=d1vup106c5v9qv user=ckcnruxsyyzsze password=7564fb08fadd71d9afaf47c548dd9b4c13b62237676e2196a9484d9486bffee1");
 
  // Performing SQL query
-
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST")
@@ -16,6 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
   $result = pg_query($dbconn ,$query);
 
   if (pg_num_rows($result) == 1){
+    $user_info = pg_fetch_array($result);
+    $role = $user_info["role"];
+    $_SESSION["refresh"] = 5;
+    $_SESSION["selected_shop"] = "ADMIN";
+    $_SESSION["role"] = $role;
     header('Location: database.php');
   }
   else header('Location: login.php');
@@ -35,7 +39,7 @@ pg_close($dbconn);
 	<h1>Login</h1>
 </head>
   <body>
-  	<div class="container">
+  	<div class="login-container">
   <form action="" method = "post">
     <div class ="firstname">
     <div><label for="fname">Username</label></div>
