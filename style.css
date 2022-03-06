@@ -35,14 +35,14 @@ label{
 }
 .account_submit{
     margin-top: 15px;
-    margin-left: 35px;
+    margin-left: 45px;
 }
 .login-container{
      display:flex;
-     width: 250px;
-     height: 200px;
+    width: 250px;
+    height: 200px;
     margin-top: 25px;
-    margin-left: 520px;
+    margin-left: 560px;
     border-style: solid;
     border-width: 5px;
 }
