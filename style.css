@@ -40,8 +40,8 @@ label{
 .login-container{
      display:flex;
      justify-content: center;
-     width: 200px;
-     height: 150px;
+     width: 250px;
+     height: 200px;
     margin-top: 25px;
     position: relative;
     border-style: solid;
