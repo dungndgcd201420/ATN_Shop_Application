@@ -48,7 +48,7 @@ pg_close($dbconn);
     <br>
     <div class="password">
     <div><label for="password">Password</label></div>
-    <div><input type="password" name="password" placeholder="Password"></div>
+    <div class="account_submit"><input type="password" name="password" placeholder="Password"></div>
     </div>
     <input type="submit" value="Submit">
   </form>
