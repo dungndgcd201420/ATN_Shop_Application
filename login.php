@@ -42,12 +42,12 @@ pg_close($dbconn);
   	<div class="login-container">
   <form action="" method = "post">
     <div class ="lable-container">
-    <div><label for="fname">Username</label></div>
+    <label for="fname">Username</label>
     </div>
     <div><input type="text" name="username" placeholder="Username"></div>
     <br>
     <div class="lable-container">
-    <div><label for="password">Password</label></div>
+    <label for="password">Password</label>
     </div>
     <div><input type="password" name="password" placeholder="Password"></div>
     <div class ="account_submit">
