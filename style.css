@@ -28,13 +28,17 @@ img{
     font-family: 'Source Sans 3', sans-serif;
 }
 label{
-    font-size: 55px;
+    font-size: 25px;
     font-family: 'Source Sans 3', sans-serif;
 }
 .login-container{
      display:flex;
       justify-content: center;
      margin-top: 25px;
+    position: relative;
+    border-style: solid;
+    border-width: 5px;
+}
 }
 .view-container {
     display: flex;
