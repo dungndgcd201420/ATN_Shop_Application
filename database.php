@@ -172,7 +172,7 @@ echo " </thead>";
            }
            //Display Table (With No Input Boxes)
             echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
-            echo "<td><input type='text' name='productname' value=\""' . $value2 . '"\" a readonly></td>";
+            echo "<td><input type='text' name='productname' value=\"" . $value2 . "\" a readonly></td>";
             echo "<td><input type='text' name='productprice' value =$value3 readonly></td>";
             echo "<td><input type='text' name='productquantity' value =$value4 readonly></td>";
             echo "<td><input type='text' name='productid' value =$value5 readonly></td>";
@@ -208,7 +208,7 @@ echo " </thead>";
            //Display Table (With Input Boxes)
             echo "<form action='' method='post'>";
             echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
-            echo "<td><input type='text' name='productname' value= \""' . $value2 . '"\" ></td>";
+            echo "<td><input type='text' name='productname' value= \"" . $value2 . "\" ></td>";
             echo "<td><input type='text' name='productprice' value =$value3></td>";
             echo "<td><input type='text' name='productquantity' value =$value4></td>";
             echo "<td><input type='text' name='productid' value =$value5 readonly></td>";
