@@ -70,7 +70,7 @@ else{
 $product = pg_query($dbconn, $getProduct);
 
 
-
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //ADD
    if(isset($_POST['add'])) {
         $productprice= $_POST['productprice'];
@@ -106,6 +106,7 @@ if(isset($_POST['update'])){
           $deleteResult = pg_query($dbconn, $delete);
          header('Location: database.php');
     }
+  }
    
 
 function DisplayManagementTable($table){
