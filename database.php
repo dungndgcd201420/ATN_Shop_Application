@@ -219,7 +219,7 @@ echo " </thead>";
             echo "<td><input type='text' name ='shopname' value='' readonly></td>";
           } 
           else{
-            echo "<td><input type='text' name ='shopname' value=$getrole readonly></td>";
+            echo "<td><input type='text' name ='shopname' value=$getrole></td>";
           }            
             echo "<td><input type='text' name='productname' ></td>";
             echo "<td><input type='text' name='productprice'></td>";
