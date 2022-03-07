@@ -10,6 +10,8 @@ $page = $_SERVER['PHP_SELF'];
 if(isset($_POST['submit_shop'])) {
       $_SESSION["selected_shop"] = $_POST["shop"];
     }
+ $getrole = $_SESSION["role"];
+
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel='stylesheet' type='text/css' href='style.css'>
@@ -31,11 +33,8 @@ if(isset($_POST['submit_shop'])) {
   //   echo "<input type = 'submit' value = 'Select Shop' name='submit_shop'>";
   // echo "</form>";
   // }
-   if($getrole =="ADMIN"){
-
-
+   if($getrole=="ADMIN"){
   ?>
-
   <form action='' method='post'>
     <select name = 'shop'>
       <option value ='SHOP_A'> SHOP A </option>
