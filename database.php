@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $productname = $_POST['productname'];
          $id = $_POST['productid'];
           $query = "INSERT INTO product (shop_name,product_id,product_name,product_price,quantity) VALUES 
-          ('".$shopname."','".$id."','".$productname."','".$productprice."','".$quantity."')";
+          ($shopname = $_POST['shopname'],$_POST['productid'],$_POST['productname'],$productprice= $_POST['productprice'],$_POST['productquantity']";
 
 
           $result = pg_query($dbconn, $query);
