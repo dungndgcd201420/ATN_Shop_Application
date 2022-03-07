@@ -20,19 +20,29 @@ if(isset($_POST['submit_shop'])) {
   <title>Database</title>  
   <link rel="stylesheet" type="text/css" href="style.css">
   <?php
-  echo $getrole;
-  if ($getrole == 'ADMIN'){
-  echo "<form action='' method='post'>";
-    echo "<select name = 'shop'>";
-      echo "<option value ='SHOP_A'> SHOP A </option>";
-      echo "<option value ='SHOP_B'> SHOP B </option>";
-      echo "<option value ='ALL_SHOP' selected> ALL SHOP </option>";
-    echo "</select>";
-    echo "<input type = 'submit' value = 'Select Shop' name='submit_shop'>";
-  echo "</form>";
-  }
+  // echo $getrole;
+  // if ($getrole == 'ADMIN'){
+  // echo "<form action='' method='post'>";
+  //   echo "<select name = 'shop'>";
+  //     echo "<option value ='SHOP_A'> SHOP A </option>";
+  //     echo "<option value ='SHOP_B'> SHOP B </option>";
+  //     echo "<option value ='ALL_SHOP' selected> ALL SHOP </option>";
+  //   echo "</select>";
+  //   echo "<input type = 'submit' value = 'Select Shop' name='submit_shop'>";
+  // echo "</form>";
+  // }
    
   ?>
+
+  <form action='' method='post'>";
+    <select name = 'shop'>";
+      <option value ='SHOP_A'> SHOP A </option>";
+      <option value ='SHOP_B'> SHOP B </option>";
+      <option value ='ALL_SHOP' selected> ALL SHOP </option>";
+    </select>";
+    <input type = 'submit' value = 'Select Shop' name='submit_shop'>";
+  </form>";
+  }
   <form action="" method="post">
     <select name = "refresh_time">
       <option value ="5"> 5 Seconds </option>
