@@ -78,9 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $shopname = $_POST['shopname'];
          $productname = $_POST['productname'];
          $id = $_POST['productid'];
-          // $query = "INSERT INTO product (shop_name ,product_id,product_name,product_price,quantity) VALUES 
-          // ('".$shopname."','".$id."', '".$productname."', '".$productprice."','".$quantity."')";
-            $query = "INSERT INTO product (shop_name ,product_id,product_name,product_price,quantity) VALUES 
+          $query = "INSERT INTO product(shop_name ,product_id,product_name,product_price,quantity) VALUES 
           ($shopname,$id,$productname,$productprice,$quantity)";
 
 
@@ -105,7 +103,7 @@ if(isset($_POST['update'])){
 
       if(isset($_POST['delete'])) {
          $id= $_POST['productid'];
-          $delete = "DELETE FROM product WHERE productid = $id";
+          $delete = "DELETE FROM product WHERE product_id = $id";
           $deleteResult = pg_query($dbconn, $delete);
          header('Location: database.php');
     }
