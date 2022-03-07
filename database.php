@@ -110,7 +110,7 @@ if(isset($_POST['update'])){
    
 
 function DisplayManagementTable($table){
-$dbconn = pg_connect("host=localhost dbname=dbaccount user=postgres password=12345");
+$dbconn = pg_connect("host=ec2-35-175-68-90.compute-1.amazonaws.com dbname=d1vup106c5v9qv user=ckcnruxsyyzsze password=7564fb08fadd71d9afaf47c548dd9b4c13b62237676e2196a9484d9486bffee1");
 $num_field = pg_num_fields($table);
 $num_row=pg_num_rows($table);
 $getrole = $_SESSION["role"];
@@ -217,7 +217,7 @@ echo " </thead>";
           echo "<td><input type='text' name ='shopname' value='' readonly></td>";
           } 
           else{
-            echo "<td><input type='text' name ='shopname' value=$getrole></td>";
+            echo "<td><input type='text' name ='shopname' value=$getrole readonly></td>";
           }            
             echo "<td><input type='text' name='productname' ></td>";
             echo "<td><input type='text' name='productprice'></td>";
