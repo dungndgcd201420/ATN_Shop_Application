@@ -73,13 +73,16 @@ $product = pg_query($dbconn, $getProduct);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //ADD
    if(isset($_POST['add'])) {
-        $productprice= $_POST['productprice'];
+         $productprice= $_POST['productprice'];
          $quantity = $_POST['productquantity'];
          $shopname = $_POST['shopname'];
          $productname = $_POST['productname'];
          $id = $_POST['productid'];
-          $query = "INSERT INTO product (shop_name ,product_id,product_name,product_price,quantity) VALUES 
-          ('".$shopname."','".$id."', '".$productname."', '".$productprice."','".$quantity."')";
+          // $query = "INSERT INTO product (shop_name ,product_id,product_name,product_price,quantity) VALUES 
+          // ('".$shopname."','".$id."', '".$productname."', '".$productprice."','".$quantity."')";
+            $query = "INSERT INTO product (shop_name ,product_id,product_name,product_price,quantity) VALUES 
+          ($shopname,$id,$productname,$productprice,$quantity)";
+
 
           $result = pg_query($dbconn, $query);
           header('Location: database.php');
@@ -160,7 +163,7 @@ echo " </thead>";
               }
            }
            //Display Table (With No Input Boxes)
-           
+            echo "<form action='' method='post'>";
               echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
              echo "<td><input type='text' name='productid' value =$value2 readonly></td>";
             echo "<td><input type='text' name='productname' value=\"" . $value3 . "\"readonly></td>";
@@ -213,9 +216,9 @@ echo " </thead>";
   
 //TABLE END
   echo "<tr>";
-          echo "<form action='' method='post'>"; 
+            echo "<form action='' method='post'>"; 
           if($getrole == "ADMIN"){
-          echo "<td><input type='text' name ='shopname' value='' readonly></td>";
+            echo "<td><input type='text' name ='shopname' value='' readonly></td>";
           } 
           else{
             echo "<td><input type='text' name ='shopname' value=$getrole readonly></td>";
@@ -224,8 +227,8 @@ echo " </thead>";
             echo "<td><input type='text' name='productprice'></td>";
             echo "<td><input type='text' name='productquantity'></td>";
             echo "<td><input type='text' name='productid'></td>";
-          echo "<td><input type='submit' value='Insert ' name='add'></td>";
-          echo "</form>";
+            echo "<td><input type='submit' value='Insert ' name='add'></td>";
+            echo "</form>";
     echo "</tr>";      
 echo "</table>";
 echo "</div>";  
