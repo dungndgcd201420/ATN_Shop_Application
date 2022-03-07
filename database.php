@@ -221,10 +221,10 @@ echo " </thead>";
           else{
             echo "<td><input type='text' name ='shopname' value=$getrole></td>";
           }            
-            echo "<td><input type='text' name='productname' ></td>";
-            echo "<td><input type='text' name='productprice'></td>";
-            echo "<td><input type='text' name='productquantity'></td>";
-            echo "<td><input type='text' name='productid'></td>";
+            echo "<td><input type='text' name='productname' value =''></td>";
+            echo "<td><input type='text' name='productprice' value =''></td>";
+            echo "<td><input type='text' name='productquantity' = value =''></td>";
+            echo "<td><input type='text' name='productid' value =''></td>";
             echo "<td><input type='submit' value='Insert ' name='add'></td>";
             echo "</form>";
     echo "</tr>";      
