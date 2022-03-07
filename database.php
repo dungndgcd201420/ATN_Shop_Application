@@ -78,8 +78,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $shopname = $_POST['shopname'];
          $productname = $_POST['productname'];
          $id = $_POST['productid'];
-         $addQuery = "INSERT INTO product (shop_name, product_id, product_name, product_price, quantity) VALUES
-         ('".$shopname."', '".$id."','".$productname."','".$productprice."','".$quantity."')";
+         // $addQuery = "INSERT INTO product (shop_name, product_id, product_name, product_price, quantity) VALUES
+         // ('".$shopname."', '".$id."','".$productname."','".$productprice."','".$quantity."')";
+          $addQuery = "INSERT INTO product (shop_name, product_id, product_name, product_price, quantity) VALUES
+         ('SHOP_A', '015','Mini Golf',92,10)";
+
           $add = pg_query($dbconn, $addQuery);
           header('Location: database.php');
    }
