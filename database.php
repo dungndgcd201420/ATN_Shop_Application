@@ -73,20 +73,19 @@ $product = pg_query($dbconn, $getProduct);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //ADD
    if(isset($_POST['add'])) {
-         $productprice= $_POST['productprice'];
+          $productprice= $_POST['productprice'];
          $quantity = $_POST['productquantity'];
          $shopname = $_POST['shopname'];
          $productname = $_POST['productname'];
          $id = $_POST['productid'];
-         $add = "INSERT INTO product (shop_name, product_id, product_name, product_price, quantity) VALUES
+         $addQuery = "INSERT INTO product (shop_name, product_id, product_name, product_price, quantity) VALUES
          ('".$shopname."', '".$id."','".$productname."','".$productprice."','".$quantity."')";
-        
-
-
-          $result = pg_query($dbconn, $add);
+          $add = pg_query($dbconn, $addQuery);
           header('Location: database.php');
+   }
+        
     //UPDATE   
-    }
+    
     
 if(isset($_POST['update'])){
          
