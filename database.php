@@ -73,6 +73,7 @@ $product = pg_query($dbconn, $getProduct);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //ADD
    if(isset($_POST['add'])) {
+    $dbconn = pg_connect("host=ec2-35-175-68-90.compute-1.amazonaws.com dbname=d1vup106c5v9qv user=ckcnruxsyyzsze password=7564fb08fadd71d9afaf47c548dd9b4c13b62237676e2196a9484d9486bffee1");
          $productprice= $_POST['productprice'];
          $quantity = $_POST['productquantity'];
          $shopname = $_POST['shopname'];
@@ -102,6 +103,7 @@ if(isset($_POST['update'])){
  //DELETE
 
       if(isset($_POST['delete'])) {
+        $dbconn = pg_connect("host=ec2-35-175-68-90.compute-1.amazonaws.com dbname=d1vup106c5v9qv user=ckcnruxsyyzsze password=7564fb08fadd71d9afaf47c548dd9b4c13b62237676e2196a9484d9486bffee1");
          $id= $_POST['productid'];
           $delete = "DELETE FROM product WHERE product_id = $id";
           $deleteResult = pg_query($dbconn, $delete);
