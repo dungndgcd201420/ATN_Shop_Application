@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $productname = $_POST['productname'];
          $id = $_POST['productid'];
          $add = "INSERT INTO product (shop_name, product_id, product_name, product_price, quantity) VALUES
-         ('".$shopname."', '".$id."','".$productname."','".$productprice."','".$quantity."'";
+         ('".$shopname."', '".$id."','".$productname."','".$productprice."','".$quantity."')";
         
 
 
@@ -215,14 +215,13 @@ echo " </thead>";
   
 //TABLE END
   echo "<tr>";
-          // if($getrole == "ADMIN"){
-          //   echo "<form action='' method='post'>"; 
-          //   echo "<td><input type='text' name ='shopname' value='' readonly></td>";
-          // } 
-          // else{
-            echo "<form action='' method='post'>";
+            echo "<form action='' method='post'>"; 
+          if($getrole == "ADMIN"){
+            echo "<td><input type='text' name ='shopname' value='' readonly></td>";
+          } 
+          else{
             echo "<td><input type='text' name ='shopname' value=$getrole></td>";
-          // }     
+          }            
             echo "<td><input type='text' name='productname' value =''></td>";
             echo "<td><input type='text' name='productprice' value =''></td>";
             echo "<td><input type='text' name='productquantity' = value =''></td>";
