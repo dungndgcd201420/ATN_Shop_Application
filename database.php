@@ -89,8 +89,8 @@ $product = pg_query($dbconn, $getProduct);
          $shopname = $_POST ['shopname'];
          $productname = $_POST['productname'];
          $id = $_POST['productid'];
-          $query = "INSERT INTO product (shop_name,product_name,product_price,quantity,product_id) VALUES 
-          ('".$shopname."', '".$productname."', '".$productprice."','".$quantity."','".$id."')";
+          $query = "INSERT INTO product (shop_name ,product_id,product_name,product_price,quantity) VALUES 
+          ('".$shopname."','".$id."', '".$productname."', '".$productprice."','".$quantity."')";
 
           $result = pg_query($dbconn, $query);
           header('Location: database.php');
