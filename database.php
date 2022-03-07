@@ -31,18 +31,22 @@ if(isset($_POST['submit_shop'])) {
   //   echo "<input type = 'submit' value = 'Select Shop' name='submit_shop'>";
   // echo "</form>";
   // }
-   
+   if($getrole =="ADMIN"){
+
+
   ?>
 
-  <form action='' method='post'>";
-    <select name = 'shop'>";
-      <option value ='SHOP_A'> SHOP A </option>";
-      <option value ='SHOP_B'> SHOP B </option>";
-      <option value ='ALL_SHOP' selected> ALL SHOP </option>";
-    </select>";
-    <input type = 'submit' value = 'Select Shop' name='submit_shop'>";
-  </form>";
-  }
+  <form action='' method='post'>
+    <select name = 'shop'>
+      <option value ='SHOP_A'> SHOP A </option>
+      <option value ='SHOP_B'> SHOP B </option>
+      <option value ='ALL_SHOP' selected> ALL SHOP </option>
+    </select>
+    <input type = 'submit' value = 'Select Shop' name='submit_shop'>
+  </form>
+  <?php
+}
+  ?>
   <form action="" method="post">
     <select name = "refresh_time">
       <option value ="5"> 5 Seconds </option>
