@@ -20,6 +20,7 @@ if(isset($_POST['submit_shop'])) {
   <title>Database</title>  
   <link rel="stylesheet" type="text/css" href="style.css">
   <?php
+  echo $getrole;
   if ($getrole == 'ADMIN'){
   echo "<form action='' method='post'>";
     echo "<select name = 'shop'>";
