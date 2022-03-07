@@ -73,13 +73,13 @@ $product = pg_query($dbconn, $getProduct);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //ADD
    if(isset($_POST['add'])) {
-          $productprice= $_POST['productprice'];
+        $productprice= $_POST['productprice'];
          $quantity = $_POST['productquantity'];
          $shopname = $_POST['shopname'];
          $productname = $_POST['productname'];
          $id = $_POST['productid'];
-         // $addQuery = "INSERT INTO product (shop_name, product_id, product_name, product_price, quantity) VALUES
-         // ('".$shopname."', '".$id."','".$productname."','".$productprice."','".$quantity."')";
+         $addQuery = "INSERT INTO product (shop_name, product_id, product_name, product_price, quantity) VALUES
+         ('".$shopname."', '".$id."','".$productname."',".$productprice.",".$quantity.")";
           $addQuery = "INSERT INTO product (shop_name, product_id, product_name, product_price, quantity) VALUES
          ('SHOP_A', '015','Mini Golf',92,10)";
 
