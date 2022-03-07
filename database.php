@@ -22,17 +22,6 @@ if(isset($_POST['submit_shop'])) {
   <title>Database</title>  
   <link rel="stylesheet" type="text/css" href="style.css">
   <?php
-  // echo $getrole;
-  // if ($getrole == 'ADMIN'){
-  // echo "<form action='' method='post'>";
-  //   echo "<select name = 'shop'>";
-  //     echo "<option value ='SHOP_A'> SHOP A </option>";
-  //     echo "<option value ='SHOP_B'> SHOP B </option>";
-  //     echo "<option value ='ALL_SHOP' selected> ALL SHOP </option>";
-  //   echo "</select>";
-  //   echo "<input type = 'submit' value = 'Select Shop' name='submit_shop'>";
-  // echo "</form>";
-  // }
    if($getrole=="ADMIN"){
   ?>
   <form action='' method='post'>
@@ -84,7 +73,7 @@ $product = pg_query($dbconn, $getProduct);
 
 //ADD
    if(isset($_POST['add'])) {
-           $productprice= $_POST['productprice'];
+        $productprice= $_POST['productprice'];
          $quantity = $_POST['productquantity'];
          $shopname = $_POST['shopname'];
          $productname = $_POST['productname'];
@@ -101,7 +90,7 @@ if(isset($_POST['update'])){
          
          $productprice= $_POST['productprice'];
          $quantity = $_POST['productquantity'];
-         $shopname = $_POST ['shopname'];
+         $shopname = $_POST['shopname'];
          $productname = $_POST['productname'];
          $id = $_POST['productid'];
          $updateQuery = "UPDATE product SET product_name = '".$productname."', product_price = 
@@ -211,7 +200,7 @@ echo " </thead>";
             echo "<td><input type='text' name='productname' value=\"" . $value3 . "\"</td>";
             echo "<td><input type='text' name='productprice' value =$value4 ></td>";
             echo "<td><input type='text' name='productquantity' value =$value5 ></td>";
-            echo "<th><input type='submit' value='  Edit  ' name='edit'></th>";
+            echo "<th><input type='submit' value='  Confirm  ' name='update'></th>";
             echo "<th><input type='submit' value='Delete' name='delete'></th>";
             echo "</form>";
           }
