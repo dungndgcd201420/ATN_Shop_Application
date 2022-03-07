@@ -173,6 +173,7 @@ echo " </thead>";
         }
                     
          if(isset($_POST['edit'])){
+           echo "<form action='' method='post'>";
            for ($k=0;$k<$num_field;$k++){
               $update_field_name = pg_field_name($table,$k);
               $update_value=$row[$update_field_name];
