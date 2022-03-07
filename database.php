@@ -160,7 +160,7 @@ echo " </thead>";
               }
            }
            //Display Table (With No Input Boxes)
-            echo "<form action='' method='post'>";
+           
               echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
              echo "<td><input type='text' name='productid' value =$value2 readonly></td>";
             echo "<td><input type='text' name='productname' value=\"" . $value3 . "\"readonly></td>";
