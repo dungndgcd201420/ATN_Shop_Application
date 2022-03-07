@@ -101,7 +101,7 @@ if(isset($_POST['update'])){
  //DELETE
 
       if(isset($_POST['delete'])) {
-         $id= $_POST['id'];
+         $id= $_POST['productid'];
           $delete = "DELETE FROM product WHERE productid = $id";
           $deleteResult = pg_query($dbconn, $delete);
          header('Location: database.php');
@@ -137,7 +137,6 @@ echo " </thead>";
     for ($j=0;$j<$num_row;$j++){
        $row=pg_fetch_array($table,$j);
        if(!isset($_POST['edit'])){
-           echo "<form action='' method='post'>";
              for ($k=0;$k<$num_field;$k++){
               $update_field_name = pg_field_name($table,$k);
               $update_value=$row[$update_field_name];
@@ -161,6 +160,7 @@ echo " </thead>";
               }
            }
            //Display Table (With No Input Boxes)
+            echo "<form action='' method='post'>";
               echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
              echo "<td><input type='text' name='productid' value =$value2 readonly></td>";
             echo "<td><input type='text' name='productname' value=\"" . $value3 . "\"readonly></td>";
@@ -173,7 +173,6 @@ echo " </thead>";
         }
                     
          if(isset($_POST['edit'])){
-           echo "<form action='' method='post'>";
            for ($k=0;$k<$num_field;$k++){
               $update_field_name = pg_field_name($table,$k);
               $update_value=$row[$update_field_name];
@@ -197,6 +196,7 @@ echo " </thead>";
               }
            }
            //Display Table (With Input Boxes)
+           echo "<form action='' method='post'>";
              echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
             echo "<td><input type='text' name='productid' value =$value2 readonly></td>";
             echo "<td><input type='text' name='productname' value=\"" . $value3 . "\"</td>";
