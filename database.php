@@ -215,14 +215,14 @@ echo " </thead>";
   
 //TABLE END
   echo "<tr>";
-          if($getrole == "ADMIN"){
-            echo "<form action='' method='post'>"; 
-            echo "<td><input type='text' name ='shopname' value='' readonly></td>";
-          } 
-          else{
+          // if($getrole == "ADMIN"){
+          //   echo "<form action='' method='post'>"; 
+          //   echo "<td><input type='text' name ='shopname' value='' readonly></td>";
+          // } 
+          // else{
             echo "<form action='' method='post'>";
             echo "<td><input type='text' name ='shopname' value=$getrole></td>";
-          }            
+          // }     
             echo "<td><input type='text' name='productname' value =''></td>";
             echo "<td><input type='text' name='productprice' value =''></td>";
             echo "<td><input type='text' name='productquantity' = value =''></td>";
