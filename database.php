@@ -171,11 +171,11 @@ echo " </thead>";
               }
            }
            //Display Table (With No Input Boxes)
-            echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
-            echo "<td><input type='text' name='productname' value=\"" . $value2 . "\" a readonly></td>";
-            echo "<td><input type='text' name='productprice' value =$value3 readonly></td>";
-            echo "<td><input type='text' name='productquantity' value =$value4 readonly></td>";
-            echo "<td><input type='text' name='productid' value =$value5 readonly></td>";
+              echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
+             echo "<td><input type='text' name='productid' value =$value2 readonly></td>";
+            echo "<td><input type='text' name='productname' value=\"" . $value3 . "\"readonly></td>";
+            echo "<td><input type='text' name='productprice' value =$value4 readonly></td>";
+            echo "<td><input type='text' name='productquantity' value =$value5 readonly></td>";
             echo "<th><input type='submit' value='  Edit  ' name='edit'></th>";
             echo "<th><input type='submit' value='Delete' name='delete'></th>";
             echo "</form>";
@@ -206,14 +206,13 @@ echo " </thead>";
               }
            }
            //Display Table (With Input Boxes)
-            echo "<form action='' method='post'>";
-            echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
-            echo "<td><input type='text' name='productname' value= \"" . $value2 . "\" ></td>";
-            echo "<td><input type='text' name='productprice' value =$value3></td>";
-            echo "<td><input type='text' name='productquantity' value =$value4></td>";
-            echo "<td><input type='text' name='productid' value =$value5 readonly></td>";
-            echo "<td><input type='submit' value='Confirm' name='update' ></td>";
-            echo "<td><input type='submit' value='Delete' name='delete'></td>";
+             echo "<td><input type='text' name ='shopname' value =$value1 readonly></td>";
+            echo "<td><input type='text' name='productid' value =$value2 readonly></td>";
+            echo "<td><input type='text' name='productname' value=\"" . $value3 . "\"</td>";
+            echo "<td><input type='text' name='productprice' value =$value4 ></td>";
+            echo "<td><input type='text' name='productquantity' value =$value5 ></td>";
+            echo "<th><input type='submit' value='  Edit  ' name='edit'></th>";
+            echo "<th><input type='submit' value='Delete' name='delete'></th>";
             echo "</form>";
           }
        
