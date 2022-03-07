@@ -21,8 +21,8 @@ if(isset($_POST['submit_shop'])) {
   <link rel="stylesheet" type="text/css" href="style.css">
   <form action="" method="post">
     <select name = "shop">
-      <option value ="dung"> SHOP A </option>
-      <option value ="khanh"> SHOP B </option>
+      <option value ="SHOP_A"> SHOP A </option>
+      <option value ="SHOP_B"> SHOP B </option>
       <option value ="ALL_SHOP" selected> ALL SHOP </option>
     </select>
     <input type = "submit" value = "Select Shop" name="submit_shop">
