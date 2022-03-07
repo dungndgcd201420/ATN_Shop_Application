@@ -20,14 +20,14 @@ if(isset($_POST['submit_shop'])) {
   <title>Database</title>  
   <link rel="stylesheet" type="text/css" href="style.css">
   <?php
-  if ($getrole == "ADMIN"){
-  echo "<form action="" method="post">";
-    echo "<select name = "shop">";
-      echo "<option value ="SHOP_A"> SHOP A </option>";
-      echo "<option value ="SHOP_B"> SHOP B </option>";
-      echo "<option value ="ALL_SHOP" selected> ALL SHOP </option>";
+  if ($getrole == 'ADMIN'){
+  echo "<form action='' method='post'>";
+    echo "<select name = 'shop'>";
+      echo "<option value ='SHOP_A'> SHOP A </option>";
+      echo "<option value ='SHOP_B'> SHOP B </option>";
+      echo "<option value ='ALL_SHOP' selected> ALL SHOP </option>";
     echo "</select>";
-    echo "<input type = "submit" value = "Select Shop" name="submit_shop">";
+    echo "<input type = 'submit' value = 'Select Shop' name='submit_shop'>";
   echo "</form>";
   }
    
