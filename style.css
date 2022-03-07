@@ -29,6 +29,14 @@ img{
     color: black;
     font-family: 'Source Sans 3', sans-serif;
 }
+.logout a{
+    margin-left: 50px;
+    list-style: none;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+    font-family: 'Source Sans 3', sans-serif;
+}
 label{
     font-size: 25px;
     font-family: 'Source Sans 3', sans-serif;

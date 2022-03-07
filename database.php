@@ -238,6 +238,7 @@ echo "</div>";
 
 // Closing connection
 pg_close($dbconn);
-echo "<a href='Logout.php'>LOG OUT</a>"
-
+echo "<div class ='logout'>";
+echo "<a href='Logout.php'>LOG OUT</a>";
+echo "</div>";
 ?>
