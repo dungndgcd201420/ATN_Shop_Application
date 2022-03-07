@@ -215,11 +215,12 @@ echo " </thead>";
   
 //TABLE END
   echo "<tr>";
-            echo "<form action='' method='post'>"; 
           if($getrole == "ADMIN"){
+            echo "<form action='' method='post'>"; 
             echo "<td><input type='text' name ='shopname' value='' readonly></td>";
           } 
           else{
+            echo "<form action='' method='post'>";
             echo "<td><input type='text' name ='shopname' value=$getrole></td>";
           }            
             echo "<td><input type='text' name='productname' value =''></td>";
